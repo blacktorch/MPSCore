@@ -1,6 +1,14 @@
+/*
+ * Copyright (c) 2020, Chidiebere
+ * */
+
 package com.chidiebere.data;
 
 import org.json.JSONObject;
+
+/**
+ * @author Chidiebere Onyedinma
+ * **/
 
 public class Subject {
     private String title;

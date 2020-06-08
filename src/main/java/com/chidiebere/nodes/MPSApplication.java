@@ -1,14 +1,20 @@
+/*
+ * Copyright (c) 2020, Chidiebere
+ * */
+
 package com.chidiebere.nodes;
 
 import com.chidiebere.data.Subject;
 import com.chidiebere.interfaces.INewSubscriberData;
-import com.chidiebere.nodes.Publisher;
-import com.chidiebere.nodes.Subscriber;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import java.util.List;
+
+/**
+ * @author Chidiebere Onyedinma
+ * **/
 
 public class MPSApplication {
 
@@ -20,16 +26,36 @@ public class MPSApplication {
         this.port = port;
     }
 
-    public Subscriber createSubscriber(Subject subject, INewSubscriberData listener) throws IOException {
-        return new Subscriber(new Socket(host, port), subject, listener);
+    public Subscriber createSingleAppSubscriber(Subject subject, INewSubscriberData listener) throws IOException {
+        return new Subscriber(new Socket(InetAddress.getByName(host), port), subject, listener);
     }
 
-    public Subscriber createSubscriber(List<Subject> subjects, INewSubscriberData listener) throws IOException {
-        return new Subscriber(new Socket(host, port), subjects, listener);
+    public Subscriber createSingleAppSubscriber(List<Subject> subjects, INewSubscriberData listener) throws IOException {
+        return new Subscriber(new Socket(InetAddress.getByName(host), port), subjects, listener);
     }
 
-    public Publisher createPublisher(){
-        return new Publisher();
+    public Publisher createSingleAppPublisher(List<Subject> subjects) throws IOException {
+        return new Publisher(new Socket(InetAddress.getByName(host), port), subjects);
+    }
+
+    public Publisher createSingleAppPublisher(Subject subject) throws IOException {
+        return new Publisher(new Socket(InetAddress.getByName(host), port), subject);
+    }
+
+    public Subscriber createMultiAppSubscriber(Subject subject, INewSubscriberData listener) throws IOException {
+        return new Subscriber(host, port, subject, listener);
+    }
+
+    public Subscriber createMultiAppSubscriber(List<Subject> subjects, INewSubscriberData listener) throws IOException {
+        return new Subscriber(host, port, subjects, listener);
+    }
+
+    public Publisher createMultiAppPublisher(List<Subject> subjects) throws IOException {
+        return new Publisher(host, port, subjects);
+    }
+
+    public Publisher createMultiAppPublisher(Subject subject) throws IOException {
+        return new Publisher(host, port, subject);
     }
 
 }

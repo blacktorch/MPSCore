@@ -1,4 +1,12 @@
+/*
+ * Copyright (c) 2020, Chidiebere
+ * */
+
 package com.chidiebere.nodes;
+
+/**
+ * @author Chidiebere Onyedinma
+ * **/
 
 public enum Participants {
 
