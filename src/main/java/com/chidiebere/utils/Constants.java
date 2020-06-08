@@ -19,7 +19,7 @@ public final class Constants {
     public static final String DATA = "data";
     public static int MINIMUM_BUFFER_SIZE = 63;
     public static int PUBLISHER_HEARTBEAT_TIMEOUT = 120;
-    public static int SUBSCRIBER_HEARTBEAT_TIMEOUT = 2000;
+    public static int SUBSCRIBER_HEARTBEAT_TIMEOUT = 5000;
     public static final String TYPE = "type";
     public static final String SUBJECTS = "subjects";
     public static final String PUB = "Publisher";
